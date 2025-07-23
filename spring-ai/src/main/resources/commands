@@ -1,0 +1,11 @@
+To run the application:
+
+mvn clean
+mvn install
+mvn spring-boot:run
+
+
+To run the Ia container
+
+podman run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+podman exec -it ollama ollama run tinyllama

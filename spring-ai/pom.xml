@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.1</version> <!-- Versão estável do Spring Boot -->
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.msc</groupId>
+	<artifactId>spring-ai</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-ai</name>
+	<description>Demo project for Spring Boot AI with Ollama</description>
+
+	<properties>
+		<java.version>21</java.version>
+		<!-- Use a versão mais recente do Spring AI. Para M6, a BOM é 1.0.0-M6 -->
+		<spring-ai.version>1.0.0-M6</spring-ai.version>
+	</properties>
+
+	<dependencies>
+		<!-- Starter para aplicações web REST -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Starter específico para integração com Ollama no Spring AI -->
+		<!-- Esta dependência já inclui as classes necessárias do ChatClient -->
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+		</dependency>
+
+		<!-- Dependência para testes -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Lombok para reduzir boilerplate code (opcional, mas útil) -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Gerenciamento de dependências para o Spring AI BOM (Bill Of Materials) -->
+	<!-- Garante que todas as dependências do Spring AI usem a mesma versão -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-bom</artifactId>
+				<version>${spring-ai.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Repositórios adicionais para versões milestone/snapshot do Spring AI -->
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+</project>
